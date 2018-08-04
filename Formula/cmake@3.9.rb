@@ -1,4 +1,4 @@
-class CmakeAt3.9 < Formula
+class CmakeAt39 < Formula
   desc "Cross-platform make"
   homepage "https://www.cmake.org/"
   head "https://cmake.org/cmake.git"
