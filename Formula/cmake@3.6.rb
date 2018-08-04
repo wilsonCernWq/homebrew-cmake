@@ -13,11 +13,6 @@ class Cmake < Formula
     sha256 "16f91ff94d784b2120e248650a7a99c5974d325900f94ead54392b2fdaabeb8e" => :yosemite
   end
 
-  devel do
-    url "https://cmake.org/files/v3.7/cmake-3.7.0-rc2.tar.gz"
-    sha256 "798e7a48f42a383da767c482810afe9ed6e3f91c99cb27719fd0407b3bf1e96d"
-  end
-
   option "without-docs", "Don't build man pages"
   option "with-completion", "Install Bash completion (Has potential problems with system bash)"
 

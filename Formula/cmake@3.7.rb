@@ -27,18 +27,6 @@ class CmakeAT37 < Formula
     sha256 "b388a21ad15f9ee06f20040753b13f45d9822c79e626245f610f929598fe46b8" => :yosemite
   end
 
-  devel do
-    url "https://cmake.org/files/v3.8/cmake-3.8.0-rc4.tar.gz"
-    sha256 "7e271e8a7c8bcdbee957e1fc2ba27e9fe745146d3190d927a8c26e736cb03e32"
-
-    # Remove for > 3.8.0-rc4
-    # Same as patch in stable block for https://gitlab.kitware.com/cmake/cmake/issues/16766
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/1b7929e/cmake/cmake-3.8.0-rc4-lto_library.diff"
-      sha256 "858789f54b65dc36d2468a24b8092c2cc3a16a753287437b42acaaabbf784583"
-    end
-  end
-
   option "without-docs", "Don't build man pages"
   option "with-completion", "Install Bash completion (Has potential problems with system bash)"
 

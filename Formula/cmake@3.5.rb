@@ -14,11 +14,6 @@ class Cmake < Formula
     sha256 "b1f3d72e7ee352da96a577638b3abda8aa9f894b5ecf91350667f89821bf7304" => :mavericks
   end
 
-  devel do
-    url "https://cmake.org/files/v3.6/cmake-3.6.0-rc1.tar.gz"
-    sha256 "2b83faac94c6421b02546ea2728f05568bfdb7ba7961102ecfb6c583fe889027"
-  end
-
   option "without-docs", "Don't build man pages"
   option "with-completion", "Install Bash completion (Has potential problems with system bash)"
 

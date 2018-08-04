@@ -34,11 +34,6 @@ class CmakeAT39 < Formula
     sha256 "d90e69aa1df7d9fd1e3147c076ce00ed90892e62024fa9df80aeb3bc1e564234" => :el_capitan
   end
 
-  devel do
-    url "https://cmake.org/files/v3.10/cmake-3.10.0-rc5.tar.gz"
-    sha256 "7c4322f778d0ac67413de0a3217c1638675d4fceab6564c9b448d617d41aedf6"
-  end
-
   option "without-docs", "Don't build man pages"
   option "with-completion", "Install Bash completion (Has potential problems with system bash)"
 
