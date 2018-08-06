@@ -2,9 +2,12 @@
 
 # cmake variables
 HOME_CMAKE=/usr/local/Cellar
+CMAKE_310_BIN=${HOME_CMAKE}/cmake@3.10/3.11.4/bin
+CMAKE_310_BIN=${HOME_CMAKE}/cmake@3.10/3.10.3/bin
 CMAKE_39_BIN=${HOME_CMAKE}/cmake@3.9/3.9.6/bin
 CMAKE_38_BIN=${HOME_CMAKE}/cmake@3.8/3.8.2/bin
 CMAKE_37_BIN=${HOME_CMAKE}/cmake@3.7/3.7.2_1/bin
+CMAKE_36_BIN=${HOME_CMAKE}/cmake@3.6/3.6.3/bin
 
 # important functions
 CONVERT_TO_SED()
@@ -49,6 +52,11 @@ INVALID_CMAKE()
     echo "Error: Incorrect cmake version number format!!"
     HELP_CMAKE
 }
+NOT_AVAIL_CMAKE()
+{
+    echo "Error: cmake $1 is not installed!!"
+    HELP_CMAKE
+}
 AVAIL_CMAKE()
 {
     echo "Error: Missing cmake version number!!"
@@ -68,8 +76,18 @@ USE_CMAKE()
         AVAIL_CMAKE
         return
     fi
+    # check version format
     local minor=${1#*.}
-    if [ "$minor" != ${minor#*.} ]; then INVALID_CMAKE; fi
+    if [ "$minor" != ${minor#*.} ]; then 
+        INVALID_CMAKE
+        return
+    fi
+    # check if this version is available
+    if [ "$(CHECK_CMAKE_VER $1)" = "" ]; then
+        NOT_AVAIL_CMAKE $1
+        return
+    fi
+    # execute
     local binpath=$(FIND_CMAKE_BIN $1)
     SETUP_CMAKE activate ${binpath}
 }
@@ -79,8 +97,18 @@ RM_CMAKE()
         AVAIL_CMAKE
         return
     fi
+    # check version format
     local minor=${1#*.}
-    if [ "$minor" != ${minor#*.} ]; then INVALID_CMAKE; fi
+    if [ "$minor" != ${minor#*.} ]; then 
+        INVALID_CMAKE
+        return
+    fi
+    # check if this version is available
+    if [ "$(CHECK_CMAKE_VER $1)" = "" ]; then 
+        NOT_AVAIL_CMAKE $1
+        return
+    fi
+    # execute
     local binpath=$(FIND_CMAKE_BIN $1)
     SETUP_CMAKE deactivate ${binpath}
 }
